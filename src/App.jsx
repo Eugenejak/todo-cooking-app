@@ -1,28 +1,38 @@
-import { Container, Col, Row } from "react-bootstrap"
+import { Container, Col, Row, Navbar, Nav } from "react-bootstrap"
+import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
+import { TodoContext } from "./contexts/TodoContext";
+
+function Layout() {
+    return (
+        <>
+            <Navbar bg="light" variant="light">
+                <Container>
+                    <Navbar.Brand href="/">Cooking Todo App</Navbar.Brand>
+                    <Nav className="me-auto">
+                        <Nav.Link href="/add">Plan</Nav.Link>
+                    </Nav>
+                </Container>
+            </Navbar>
+            <Outlet />
+        </>
+    );
+}
 
 export default function App() {
+    const [todos, setTodos] = useLocalStorage("todos", []);
+
     return (
-        <Container>
-            <Row className="text-center mb-4">
-                <h1>Cooking Todo App</h1>
-                <p>Eat to Plan, Plan to Eat</p>
-                <Col sm={3}>
-                    <button>Save</button>
-                </Col>
-                <Col sm={3}>
-                    <button>Organize</button>
-                </Col>
-                <Col sm={3}>
-                    <button>Plan</button>
-                </Col>
-                <Col sm={3}>
-                    <button>Shop</button>
-                </Col>
-                <button>
-                    Get Started
-                </button>
-            </Row>
-        </Container>
+        <TodoContext.Provider value={{ todos, setTodos }}>
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={<Layout />}>
+                        <Route index element={<Home />} />
+                        <Route path="add" element={<Plan />} />
+                        <Route path="*" element={<Error />} />
+                    </Route>
+                </Routes>
+            </BrowserRouter>
+        </TodoContext.Provider>
     );
 }
 

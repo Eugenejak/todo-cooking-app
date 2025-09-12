@@ -28,10 +28,21 @@ export default function Plan() {
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
                         type="text"
-                        placeholder="What are you eating today?"
+                        placeholder="What are you cooking today?"
                         required
                     />
                 </Form.Group>
+                <Form.Check
+                    type="checkbox"
+                    id="completed"
+                    label="Mark as completed"
+                    check={completed}
+                    onChange={(e) => setCompleted(e.target.checked)}
+                    className="mb-3"
+                />
+                <Button variant="primary" type="submit">
+                    Submit
+                </Button>
             </Form>
         </Container>
     );
