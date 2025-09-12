@@ -1,6 +1,10 @@
-import { Container, Col, Row, Navbar, Nav } from "react-bootstrap"
+import { Container, Navbar, Nav } from "react-bootstrap"
 import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import { TodoContext } from "./contexts/TodoContext";
+import useLocalStorage from "use-local-storage";
+import Plan from "./pages/Plan";
+import Home from "./pages/Home";
+import ErrorPage from "./pages/ErrorPage"
 
 function Layout() {
     return (
@@ -28,7 +32,7 @@ export default function App() {
                     <Route path="/" element={<Layout />}>
                         <Route index element={<Home />} />
                         <Route path="add" element={<Plan />} />
-                        <Route path="*" element={<Error />} />
+                        <Route path="*" element={<ErrorPage />} />
                     </Route>
                 </Routes>
             </BrowserRouter>

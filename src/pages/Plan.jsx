@@ -31,6 +31,16 @@ export default function Plan() {
                         placeholder="What are you cooking today?"
                         required
                     />
+                    <Form.Group className="mb-3" controlId="description">
+                        <Form.Label>Description</Form.Label>
+                        <Form.Control
+                            value={description}
+                            onChange={(e) => setDescription(e.target.value)}
+                            as="textarea"
+                            rows={3}
+                            placeholder="Recipes"
+                            required />
+                    </Form.Group>
                 </Form.Group>
                 <Form.Check
                     type="checkbox"
