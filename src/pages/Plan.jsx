@@ -1,0 +1,38 @@
+import { useContext, useState } from "react";
+import { TodoContext } from "../contexts/TodoContext";
+import { useNavigate } from "react-router-dom";
+import { Button, Container, Form } from "react-bootstrap";
+
+export default function Plan() {
+    const [title, setTitle] = useState("");
+    const [description, setDescription] = useState(null);
+    const [completed, setCompleted] = useState(false);
+
+    const setTodos = useContext(TodoContext).setTodos;
+    const todos = useContext(TodoContext).todos;
+    const navigate = useNavigate();
+
+    function addPlan(event) {
+        event.preventDefault();
+        setTodos([...todos, { id: Date.now(), title, description, completed }]);
+        navigate("/");
+    }
+
+    return (
+        <Container>
+            <h1 className="my-3">Add Todo</h1>
+            <Form onSubmit={addPlan}>
+                <Form.Group className="mb-3" controlId="title">
+                    <Form.Label>Title</Form.Label>
+                    <Form.Control
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
+                        type="text"
+                        placeholder="What are you eating today?"
+                        required
+                    />
+                </Form.Group>
+            </Form>
+        </Container>
+    );
+}
