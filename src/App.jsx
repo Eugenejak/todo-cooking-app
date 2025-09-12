@@ -5,6 +5,7 @@ import useLocalStorage from "use-local-storage";
 import Plan from "./pages/Plan";
 import Home from "./pages/Home";
 import ErrorPage from "./pages/ErrorPage"
+import EditTodo from "./pages/EditTodo";
 
 function Layout() {
     return (
@@ -33,6 +34,7 @@ export default function App() {
                         <Route index element={<Home />} />
                         <Route path="add" element={<Plan />} />
                         <Route path="*" element={<ErrorPage />} />
+                        <Route path="todo/:id" element={<EditTodo />} />
                     </Route>
                 </Routes>
             </BrowserRouter>
