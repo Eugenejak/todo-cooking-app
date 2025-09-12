@@ -5,7 +5,7 @@ import { Button, Container, Form } from "react-bootstrap";
 
 export default function Plan() {
     const [title, setTitle] = useState("");
-    const [description, setDescription] = useState(null);
+    const [description, setDescription] = useState("");
     const [completed, setCompleted] = useState(false);
 
     const setTodos = useContext(TodoContext).setTodos;
@@ -22,6 +22,7 @@ export default function Plan() {
         <Container>
             <h1 className="my-3">Add Todo</h1>
             <Form onSubmit={addPlan}>
+
                 <Form.Group className="mb-3" controlId="title">
                     <Form.Label>Title</Form.Label>
                     <Form.Control
@@ -31,6 +32,7 @@ export default function Plan() {
                         placeholder="What are you cooking today?"
                         required
                     />
+
                     <Form.Group className="mb-3" controlId="description">
                         <Form.Label>Description</Form.Label>
                         <Form.Control
@@ -42,11 +44,12 @@ export default function Plan() {
                             required />
                     </Form.Group>
                 </Form.Group>
+
                 <Form.Check
                     type="checkbox"
                     id="completed"
                     label="Mark as completed"
-                    check={completed}
+                    checked={completed}
                     onChange={(e) => setCompleted(e.target.checked)}
                     className="mb-3"
                 />
