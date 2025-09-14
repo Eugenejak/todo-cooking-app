@@ -6,6 +6,8 @@ import Plan from "./pages/Plan";
 import Home from "./pages/Home";
 import ErrorPage from "./pages/ErrorPage"
 import EditTodo from "./pages/EditTodo";
+import Login from "./pages/Login";
+
 
 function Layout() {
     return (
@@ -35,6 +37,7 @@ export default function App() {
                         <Route path="add" element={<Plan />} />
                         <Route path="*" element={<ErrorPage />} />
                         <Route path="todo/:id" element={<EditTodo />} />
+                        <Route path="login" element={<Login />} />
                     </Route>
                 </Routes>
             </BrowserRouter>
