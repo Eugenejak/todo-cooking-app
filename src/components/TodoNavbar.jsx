@@ -1,6 +1,7 @@
+import { Container, Navbar, Nav } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext"
 
-export default function Navbar() {
+export default function TodoNavbar() {
     const { isAuthenticated, logout } = useAuth();
 
     return (
@@ -10,9 +11,9 @@ export default function Navbar() {
                 <Nav className="me-auto">
                     <Nav.Link href="/plan">Plan</Nav.Link>
                     {!isAuthenticated ? (
-                        <button>Login</button>
+                        <Nav.Link href="/login">Login</Nav.Link>
                     ) : (
-                        <button onClick={logout}>Logout</button>
+                        <Nav.Link href="/logout">Logout</Nav.Link>
                     )}
                 </Nav>
             </Container>
