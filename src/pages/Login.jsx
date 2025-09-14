@@ -1,10 +1,23 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../contexts/AuthContext";
 
 
 export default function Login() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const navigate = useNavigate();
+    const authContext = useContext(AuthContext);
+
+    function login() {
+        const isCorrectUsername = username === "johndoe@sigmaschool.co";
+        const isCorrectPassword = password === "password";
+        if (isCorrectUsername && isCorrectPassword) {
+            authContext.setToken("1234");
+            navigate("/add");
+        }
+    }
 
     return (
         <Container>
@@ -29,7 +42,7 @@ export default function Login() {
                         onChange={(e) => setPassword(e.target.value)}
                     />
                 </Form.Group>
-                <Button variant="primary">
+                <Button variant="primary" onClick={login}>
                     Login
                 </Button>
             </Form>

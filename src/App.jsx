@@ -7,6 +7,8 @@ import Home from "./pages/Home";
 import ErrorPage from "./pages/ErrorPage"
 import EditTodo from "./pages/EditTodo";
 import Login from "./pages/Login";
+import { useState } from "react";
+import { AuthContext } from "./contexts/AuthContext";
 
 
 function Layout() {
@@ -26,22 +28,25 @@ function Layout() {
 }
 
 export default function App() {
+    const [token, setToken] = useState(null);
     const [todos, setTodos] = useLocalStorage("todos", []);
 
     return (
-        <TodoContext.Provider value={{ todos, setTodos }}>
-            <BrowserRouter>
-                <Routes>
-                    <Route path="/" element={<Layout />}>
-                        <Route index element={<Home />} />
-                        <Route path="add" element={<Plan />} />
-                        <Route path="*" element={<ErrorPage />} />
-                        <Route path="todo/:id" element={<EditTodo />} />
-                        <Route path="login" element={<Login />} />
-                    </Route>
-                </Routes>
-            </BrowserRouter>
-        </TodoContext.Provider>
+        <AuthContext.Provider value={{ token, setToken }}>
+            <TodoContext.Provider value={{ todos, setTodos }}>
+                <BrowserRouter>
+                    <Routes>
+                        <Route path="/" element={<Layout />}>
+                            <Route index element={<Home />} />
+                            <Route path="add" element={<Plan />} />
+                            <Route path="*" element={<ErrorPage />} />
+                            <Route path="todo/:id" element={<EditTodo />} />
+                            <Route path="login" element={<Login />} />
+                        </Route>
+                    </Routes>
+                </BrowserRouter>
+            </TodoContext.Provider>
+        </AuthContext.Provider>
     );
 }
 
