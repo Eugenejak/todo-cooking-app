@@ -14,15 +14,7 @@ import RequireAuth from "./components/RequireAuth";
 function Layout() {
     return (
         <>
-            <Navbar bg="light" variant="light">
-                <Container>
-                    <Navbar.Brand href="/">Cooking Todo App</Navbar.Brand>
-                    <Nav className="me-auto">
-                        <Nav.Link href="/plan">Plan</Nav.Link>
-                        <Nav.Link href="/login">Login</Nav.Link>
-                    </Nav>
-                </Container>
-            </Navbar>
+            <Navbar />
             <Outlet />
         </>
     );
