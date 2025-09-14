@@ -9,6 +9,7 @@ import EditTodo from "./pages/EditTodo";
 import Login from "./pages/Login";
 import { useState } from "react";
 import { AuthContext } from "./contexts/AuthContext";
+import RequireAuth from "./components/RequireAuth";
 
 
 function Layout() {
@@ -38,10 +39,14 @@ export default function App() {
                     <Routes>
                         <Route path="/" element={<Layout />}>
                             <Route index element={<Home />} />
-                            <Route path="add" element={<Plan />} />
+                            <Route path="/plan" element={
+                                <RequireAuth>
+                                    <Plan />
+                                </RequireAuth>
+                            } />
                             <Route path="*" element={<ErrorPage />} />
-                            <Route path="todo/:id" element={<EditTodo />} />
-                            <Route path="login" element={<Login />} />
+                            <Route path="/edit" element={<EditTodo />} />
+                            <Route path="/login" element={<Login />} />
                         </Route>
                     </Routes>
                 </BrowserRouter>

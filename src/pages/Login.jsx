@@ -15,7 +15,7 @@ export default function Login() {
         const isCorrectPassword = password === "password";
         if (isCorrectUsername && isCorrectPassword) {
             authContext.setToken("1234");
-            navigate("/add");
+            navigate("/plan");
         }
     }
 
