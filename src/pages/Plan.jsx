@@ -1,7 +1,8 @@
 import { useContext, useState } from "react";
 import { TodoContext } from "../contexts/TodoContext";
 import { useNavigate } from "react-router-dom";
-import { Button, Container, Form } from "react-bootstrap";
+import { Button, Col, Container, Form, Row } from "react-bootstrap";
+import PlanCard from "../components/PlanCard";
 
 export default function Plan() {
     const [title, setTitle] = useState("");
@@ -15,7 +16,7 @@ export default function Plan() {
     function addPlan(event) {
         event.preventDefault();
         setTodos([...todos, { id: Date.now(), title, description, completed }]);
-        navigate("/");
+        navigate("/plan");
     }
 
     return (
@@ -56,7 +57,20 @@ export default function Plan() {
                 <Button variant="primary" type="submit">
                     Submit
                 </Button>
+                <Row>
+                    <CardGroup todos={todos} />
+                </Row>
             </Form>
         </Container>
     );
+}
+
+function CardGroup({ todos }) {
+    return todos.map((todo) => {
+        return (
+            <Col md={4} key={todo.id}>
+                <PlanCard todo={todo} />
+            </Col>
+        );
+    });
 }
