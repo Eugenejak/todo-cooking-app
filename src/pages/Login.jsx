@@ -1,21 +1,23 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../contexts/AuthContext";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
 
 
 export default function Login() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
-    const authContext = useContext(AuthContext);
+    const location = useLocation();
+    const { login } = useAuth();
 
-    function login() {
+    function userLogin() {
         const isCorrectUsername = username === "johndoe@sigmaschool.co";
         const isCorrectPassword = password === "password";
         if (isCorrectUsername && isCorrectPassword) {
-            authContext.setToken("1234");
-            navigate("/plan");
+            login();
+            const from = location.state?.from?.pathname || "/";
+            navigate(from, { replace: true })
         }
     }
 
@@ -42,7 +44,7 @@ export default function Login() {
                         onChange={(e) => setPassword(e.target.value)}
                     />
                 </Form.Group>
-                <Button variant="primary" onClick={login}>
+                <Button variant="primary" onClick={userLogin}>
                     Login
                 </Button>
             </Form>

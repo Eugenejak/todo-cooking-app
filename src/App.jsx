@@ -26,6 +26,7 @@ export default function App() {
     return (
         <AuthProvider>
             <TodoContext.Provider value={{ todos, setTodos }}>
+                <Navbar />
                 <BrowserRouter>
                     <Routes>
                         <Route path="/" element={<Layout />}>
