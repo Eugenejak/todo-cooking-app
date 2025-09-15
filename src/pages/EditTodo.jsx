@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
-import { Form, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { TodoContext } from "../contexts/TodoContext";
-import { Button, Container } from "react-bootstrap";
+import { Form, Button, Container } from "react-bootstrap";
 
 
 export default function EditTodo() {
@@ -9,7 +9,7 @@ export default function EditTodo() {
     const todos = useContext(TodoContext).todos;
     const navigate = useNavigate();
     const id = parseInt(useParams().id);
-    const currentTodo = todos.filter((todo) => todo.id === id)[0];
+    const currentTodo = todos.find((todo) => todo.id === id);
     const [title, setTitle] = useState(currentTodo.title);
     const [description, setDescription] = useState(currentTodo.description);
     const [completed, setCompleted] = useState(currentTodo.completed)
@@ -32,7 +32,7 @@ export default function EditTodo() {
             <Form onSubmit={updateTodo}>
                 <Form.Group className="mb-3" controlId="title">
                     <Form.Label>Title</Form.Label>
-                    <Form.control
+                    <Form.Control
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
                         type="text"
@@ -43,7 +43,7 @@ export default function EditTodo() {
 
                 <Form.Group className="mb-3" controlId="description">
                     <Form.Label>Description</Form.Label>
-                    <Form.control
+                    <Form.Control
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
                         as="textarea"
@@ -60,7 +60,7 @@ export default function EditTodo() {
                     onChange={(e) => setCompleted(e.target.checked)}
                     className="mb-3"
                 />
-                <Button variant="primry" type="submit">
+                <Button variant="primary" type="submit">
                     Submit
                 </Button>
             </Form>

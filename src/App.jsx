@@ -36,7 +36,7 @@ export default function App() {
                                 </RequireAuth>
                             } />
                             <Route path="*" element={<ErrorPage />} />
-                            <Route path="/edit" element={<EditTodo />} />
+                            <Route path="/edit/:id" element={<EditTodo />} />
                             <Route path="/login" element={<Login />} />
                         </Route>
                     </Routes>

@@ -21,7 +21,7 @@ export default function PlanCard({ todo }) {
                 <Card.Body>
                     <Card.Title>{todo.title}</Card.Title>
                     <Card.Text>{todo.description}</Card.Text>
-                    <Button variant="secondary" href={`todo/${todo.id}`} className="ms-2">
+                    <Button variant="secondary" href={`edit/${todo.id}`} className="ms-2">
                         <i className="bi bi-pencil"></i>
                     </Button>
                     <Button variant="danger" onClick={deleteTodo} className="ms-2">
