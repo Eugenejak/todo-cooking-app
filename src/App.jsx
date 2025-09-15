@@ -1,4 +1,3 @@
-import { Navbar } from "react-bootstrap"
 import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import { TodoContext } from "./contexts/TodoContext";
 import useLocalStorage from "use-local-storage";
@@ -9,12 +8,13 @@ import EditTodo from "./pages/EditTodo";
 import Login from "./pages/Login";
 import { AuthProvider } from "./contexts/AuthContext";
 import RequireAuth from "./components/RequireAuth";
+import TodoNavbar from "./components/TodoNavbar";
 
 
 function Layout() {
     return (
         <>
-            <Navbar />
+            <TodoNavbar />
             <Outlet />
         </>
     );
@@ -26,7 +26,6 @@ export default function App() {
     return (
         <AuthProvider>
             <TodoContext.Provider value={{ todos, setTodos }}>
-                <Navbar />
                 <BrowserRouter>
                     <Routes>
                         <Route path="/" element={<Layout />}>

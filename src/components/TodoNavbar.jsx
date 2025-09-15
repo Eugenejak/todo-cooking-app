@@ -3,7 +3,7 @@ import { useAuth } from "../contexts/AuthContext"
 import { Link } from "react-router-dom";
 
 export default function TodoNavbar() {
-    const { isAuthenticated, login, logout } = useAuth();
+    const { isAuthenticated, logout } = useAuth();
 
     return (
         <Navbar bg="light" variant="light">
@@ -12,7 +12,7 @@ export default function TodoNavbar() {
                 <Nav className="me-auto">
                     <Nav.Link as={Link} to="/plan">Plan</Nav.Link>
                     {!isAuthenticated ? (
-                        <Nav.Link as={Link} to="/login" onClick={login}>Login</Nav.Link>
+                        <Nav.Link as={Link} to="/login">Login</Nav.Link>
                     ) : (
                         <Nav.Link as={Link} to="/" onClick={logout}>Logout</Nav.Link>
                     )}
