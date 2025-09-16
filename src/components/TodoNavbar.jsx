@@ -11,6 +11,9 @@ export default function TodoNavbar() {
                 <Navbar.Brand as={Link} to="/">Cooking Todo App</Navbar.Brand>
                 <Nav className="me-auto">
                     <Nav.Link as={Link} to="/plan">Plan</Nav.Link>
+                    <Nav.Link as={Link} to="/save">Save</Nav.Link>
+                </Nav>
+                <Nav>
                     {!isAuthenticated ? (
                         <Nav.Link as={Link} to="/login">Login</Nav.Link>
                     ) : (
