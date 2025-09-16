@@ -10,6 +10,12 @@ export default function Save({ onSave }) {
         setRecipes(data.meals || []);
     }
 
+    function handleSave(meal) {
+        onSave(meal);
+        setRecipes([]);
+        setMealSearch("");
+    }
+
     return (
         <div>
             <h2>Search for Meals</h2>
@@ -24,7 +30,7 @@ export default function Save({ onSave }) {
                 {recipes.map((meal) => (
                     <li key={meal.idMeal}>
                         {meal.strMeal}
-                        <button onClick={() => onSave(meal)}>Save
+                        <button onClick={() => handleSave(meal)}>Save
                         </button>
                     </li>
                 ))}

@@ -9,8 +9,8 @@ import Login from "./pages/Login";
 import { AuthProvider } from "./contexts/AuthContext";
 import RequireAuth from "./components/RequireAuth";
 import TodoNavbar from "./components/TodoNavbar";
-import Save from "./pages/Save";
 import { SaveProvider } from "./contexts/SaveContext";
+import MealsPage from "./components/MealsPage";
 
 
 function Layout() {
@@ -40,7 +40,7 @@ export default function App() {
                                 } />
                                 <Route path="/save" element={
                                     <RequireAuth>
-                                        <Save />
+                                        <MealsPage />
                                     </RequireAuth>
                                 } />
                                 <Route path="*" element={<ErrorPage />} />

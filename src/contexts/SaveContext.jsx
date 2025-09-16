@@ -6,7 +6,11 @@ export function SaveProvider({ children }) {
     const [savedMeals, setSavedMeals] = useState([]);
 
     function addMeal(meal) {
-        setSavedMeals((prev) => [...prev, meal]);
+        setSavedMeals((prev) => {
+            if (prev.find((m) => m.idMeal === meal.idMeal))
+                return prev;
+            return [...prev, meal]
+        });
     }
 
     function removeMeal(id) {
