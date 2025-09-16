@@ -13,11 +13,13 @@ export default function Login() {
 
     function userLogin() {
         const isCorrectUsername = username === "johndoe@sigmaschool.co";
-        const isCorrectPassword = password === "password";
+        const isCorrectPassword = password === "strongPassword";
         if (isCorrectUsername && isCorrectPassword) {
-            login();
+            login(username, password);
             const from = location.state?.from?.pathname || "/";
             navigate(from, { replace: true })
+        } else {
+            alert("Invalid username or password")
         }
     }
 
