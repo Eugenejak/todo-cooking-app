@@ -14,8 +14,8 @@ export default function EditTodo() {
     const [description, setDescription] = useState(currentTodo.description);
     const [completed, setCompleted] = useState(currentTodo.completed)
 
-    function updateTodo(event) {
-        event.preventDefault();
+    function updateTodo(e) {
+        e.preventDefault();
         const updatedTodos = todos.map((todo) => {
             if (todo.id === id) {
                 return { id, title, description, completed };
@@ -23,7 +23,7 @@ export default function EditTodo() {
             return todo;
         });
         setTodos(updatedTodos);
-        navigate("/");
+        navigate("/plan");
     }
 
     return (

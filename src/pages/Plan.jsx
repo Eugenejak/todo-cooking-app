@@ -13,10 +13,13 @@ export default function Plan() {
     const todos = useContext(TodoContext).todos;
     const navigate = useNavigate();
 
-    function addPlan(event) {
-        event.preventDefault();
+    function addPlan(e) {
+        e.preventDefault();
         setTodos([...todos, { id: Date.now(), title, description, completed }]);
         navigate("/plan");
+        setTitle("");
+        setDescription("");
+        setCompleted(false);
     }
 
     return (

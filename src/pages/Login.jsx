@@ -11,22 +11,21 @@ export default function Login() {
     const location = useLocation();
     const { login } = useAuth();
 
-    function userLogin() {
-        const isCorrectUsername = username === "johndoe@sigmaschool.co";
-        const isCorrectPassword = password === "strongPassword";
-        if (isCorrectUsername && isCorrectPassword) {
-            login(username, password);
+    function userLogin(e) {
+        e.preventDefault();
+        const sucessfulLogin = login(username, password);
+        if (sucessfulLogin) {
             const from = location.state?.from?.pathname || "/";
             navigate(from, { replace: true })
         } else {
-            alert("Invalid username or password")
-        }
+            alert("Invalid username or password");
+        };
     }
 
     return (
         <Container>
             <h1 className="my-3">Login to your account</h1>
-            <Form>
+            <Form onSubmit={userLogin}>
                 <Form.Group className="mb-3" controlId="formEmail">
                     <Form.Label>Email address</Form.Label>
                     <Form.Control
@@ -46,7 +45,7 @@ export default function Login() {
                         onChange={(e) => setPassword(e.target.value)}
                     />
                 </Form.Group>
-                <Button variant="primary" onClick={userLogin}>
+                <Button variant="primary" type="submit">
                     Login
                 </Button>
             </Form>
