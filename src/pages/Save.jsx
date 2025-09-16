@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { Button, Card, Col, Row } from "react-bootstrap";
-import { Form } from "react-router-dom";
+import { Button, Card, Col, Form, Row } from "react-bootstrap";
 
 export default function Save({ onSave }) {
     const [mealSearch, setMealSearch] = useState("");
@@ -21,14 +20,21 @@ export default function Save({ onSave }) {
     return (
         <div className="my-2">
             <h2>Search for Meals</h2>
-            <Form className="d-flex mb-3">
+            <Form
+                className="d-flex mb-3"
+                onSubmit={(e) => e.preventDefault()}
+            >
                 <Form.Control
+                    className="me-2"
                     type="text"
-                    placeholder="Search for a meal..."
+                    placeholder="Search a meal..."
                     value={mealSearch}
                     onChange={(e) => setMealSearch(e.target.value)}
                 />
-                <button onClick={fetchRecipes}>Search</button>
+                <Button
+                    onClick={fetchRecipes}>
+                    Search
+                </Button>
             </Form>
 
             <Row xs={1} md={2} lg={3} className="g-3">

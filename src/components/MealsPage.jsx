@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useMeals } from "../contexts/SaveContext";
 import Save from "../pages/Save";
-import { Button, Card, Col } from "react-bootstrap";
+import { Button, Card, Col, Row } from "react-bootstrap";
 
 function RecipeDesc({ meal, removeMeal }) {
     const [showFull, setShowFull] = useState(false);
@@ -43,7 +43,7 @@ export default function MealsPage() {
 
             <h3 className="mb-3">Saved Meals</h3>
             {savedMeals.length === 0 ? (
-                <p>Meal not found.</p>
+                <p>No meals saved.</p>
             ) : (
                 <Row xs={1} md={2} lg={3} className="g-3">
                     {savedMeals.map((meal) => (
