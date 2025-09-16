@@ -10,6 +10,7 @@ import { AuthProvider } from "./contexts/AuthContext";
 import RequireAuth from "./components/RequireAuth";
 import TodoNavbar from "./components/TodoNavbar";
 import Save from "./pages/Save";
+import { SaveContext } from "./contexts/SaveContext";
 
 
 function Layout() {
@@ -27,26 +28,28 @@ export default function App() {
     return (
         <AuthProvider>
             <TodoContext.Provider value={{ todos, setTodos }}>
-                <BrowserRouter>
-                    <Routes>
-                        <Route path="/" element={<Layout />}>
-                            <Route index element={<Home />} />
-                            <Route path="/plan" element={
-                                <RequireAuth>
-                                    <Plan />
-                                </RequireAuth>
-                            } />
-                            <Route path="/save" element={
-                                <RequireAuth>
-                                    <Save />
-                                </RequireAuth>
-                            } />
-                            <Route path="*" element={<ErrorPage />} />
-                            <Route path="/edit/:id" element={<EditTodo />} />
-                            <Route path="/login" element={<Login />} />
-                        </Route>
-                    </Routes>
-                </BrowserRouter>
+                <SaveContext.Provider>
+                    <BrowserRouter>
+                        <Routes>
+                            <Route path="/" element={<Layout />}>
+                                <Route index element={<Home />} />
+                                <Route path="/plan" element={
+                                    <RequireAuth>
+                                        <Plan />
+                                    </RequireAuth>
+                                } />
+                                <Route path="/save" element={
+                                    <RequireAuth>
+                                        <Save />
+                                    </RequireAuth>
+                                } />
+                                <Route path="*" element={<ErrorPage />} />
+                                <Route path="/edit/:id" element={<EditTodo />} />
+                                <Route path="/login" element={<Login />} />
+                            </Route>
+                        </Routes>
+                    </BrowserRouter>
+                </SaveContext.Provider>
             </TodoContext.Provider>
         </AuthProvider>
     );

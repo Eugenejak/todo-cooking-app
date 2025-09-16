@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function Save(isSaved) {
+export default function Save({ onSave }) {
     const [mealSearch, setMealSearch] = useState("");
     const [recipes, setRecipes] = useState([]);
 
@@ -24,7 +24,7 @@ export default function Save(isSaved) {
                 {recipes.map((meal) => (
                     <li key={meal.idMeal}>
                         {meal.strMeal}
-                        <button onClick={() => isSaved(meal)}>Save
+                        <button onClick={() => onSave(meal)}>Save
                         </button>
                     </li>
                 ))}
