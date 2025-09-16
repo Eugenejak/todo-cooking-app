@@ -10,7 +10,7 @@ import { AuthProvider } from "./contexts/AuthContext";
 import RequireAuth from "./components/RequireAuth";
 import TodoNavbar from "./components/TodoNavbar";
 import Save from "./pages/Save";
-import { SaveContext } from "./contexts/SaveContext";
+import { SaveProvider } from "./contexts/SaveContext";
 
 
 function Layout() {
@@ -28,7 +28,7 @@ export default function App() {
     return (
         <AuthProvider>
             <TodoContext.Provider value={{ todos, setTodos }}>
-                <SaveContext.Provider>
+                <SaveProvider>
                     <BrowserRouter>
                         <Routes>
                             <Route path="/" element={<Layout />}>
@@ -49,7 +49,7 @@ export default function App() {
                             </Route>
                         </Routes>
                     </BrowserRouter>
-                </SaveContext.Provider>
+                </SaveProvider>
             </TodoContext.Provider>
         </AuthProvider>
     );
