@@ -9,6 +9,7 @@ import Login from "./pages/Login";
 import { AuthProvider } from "./contexts/AuthContext";
 import RequireAuth from "./components/RequireAuth";
 import TodoNavbar from "./components/TodoNavbar";
+import Save from "./pages/Save";
 
 
 function Layout() {
@@ -33,6 +34,11 @@ export default function App() {
                             <Route path="/plan" element={
                                 <RequireAuth>
                                     <Plan />
+                                </RequireAuth>
+                            } />
+                            <Route path="/save" element={
+                                <RequireAuth>
+                                    <Save />
                                 </RequireAuth>
                             } />
                             <Route path="*" element={<ErrorPage />} />
