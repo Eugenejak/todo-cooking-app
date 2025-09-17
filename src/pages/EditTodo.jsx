@@ -27,11 +27,12 @@ export default function EditTodo() {
     }
 
     return (
-        <Container>
-            <h1 className="my-3">Edit Todo</h1>
+        <Container className="my-4">
+            <h1 className="my-4">Plan Recipe</h1>
+
             <Form onSubmit={updateTodo}>
                 <Form.Group className="mb-3" controlId="title">
-                    <Form.Label>Title</Form.Label>
+                    <Form.Label>Meal</Form.Label>
                     <Form.Control
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
@@ -42,7 +43,7 @@ export default function EditTodo() {
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="description">
-                    <Form.Label>Description</Form.Label>
+                    <Form.Label>Recipes</Form.Label>
                     <Form.Control
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
@@ -61,7 +62,7 @@ export default function EditTodo() {
                     className="mb-3"
                 />
                 <Button variant="primary" type="submit">
-                    Submit
+                    Edit
                 </Button>
             </Form>
         </Container>
