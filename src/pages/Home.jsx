@@ -15,8 +15,8 @@ export default function Home() {
                     backgroundPosition: "center",
                 }}
             >
-                <h2 style={{ color: "black" }} className=" text-black bg-white display-3 mb-4">Welcome to Cooking App</h2>
-                <p style={{ color: "black" }} className="text-black bg-white lead mb-4">Plan your day and save your favourite recipes!</p>
+                <h2 className=" text-black bg-white display-3 mb-4">Welcome to Cooking App</h2>
+                <p className="text-black bg-white lead mb-4">Plan your meal and save your favourite recipes!</p>
                 <Button
                     variant="primary"
                     size="lg"

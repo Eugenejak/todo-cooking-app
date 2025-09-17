@@ -62,7 +62,7 @@ export default function EditTodo() {
                     className="mb-3"
                 />
                 <Button variant="primary" type="submit">
-                    Edit
+                    Update
                 </Button>
             </Form>
         </Container>
